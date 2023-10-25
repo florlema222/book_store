@@ -1,13 +1,21 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[ show edit update destroy ]
 
+
+  def search
+    @books = Book.all
+
+  end
   # GET /books or /books.json
   def index
+    #if current_user.role== admin
+    #else no eres admin
     @books = Book.all
   end
 
   # GET /books/1 or /books/1.json
   def show
+    @book = Book.find(params[:id])
   end
 
   # GET /books/new
