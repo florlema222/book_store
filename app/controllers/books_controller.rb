@@ -3,14 +3,21 @@ class BooksController < ApplicationController
 
 
   def search
-    @books = Book.all
+    # Lógica para realizar la búsqueda de libros aquí
+    # Puedes utilizar el parámetro params[:query] para obtener la cadena de búsqueda.
+    @results = Book.where("title LIKE ?", "%#{params[:query]}%")
 
+    respond_to do |format|
+      format.html
+      format.json { render json: @results }
+    end
   end
   # GET /books or /books.json
   def index
-    #if current_user.role== admin
-    #else no eres admin
     @books = Book.all
+    if params[:query].present?
+      @books = @books.where(title: params[:query])
+    end
   end
 
   # GET /books/1 or /books/1.json

@@ -1,0 +1,21 @@
+<div class="row justify-content-center">
+  <div class="col-sm-8">
+    <div id="books">
+      <% if @results.any? %>
+        <% @results.each do |book| %>
+          <h4><%= book.title %></h4>
+          <h2><%= "#{Author.find(book.author_id).first_name} #{Author.find(book.author_id).last_name}" %></h2>
+          <p><%= book.isbn %></p>
+          <p><%= book.review %></p>
+          <p><%= "#{Publisher.find(book.publisher_id).name}" %></p>
+          <p><%= book.date_of_publication %></p>
+          <p><%= book.price %></p>
+          <p><%= link_to "Show this book", book_path(book) %></p>
+        <% end %>
+      <% else %>
+        <em>Sorry, no books found.</em>
+      <% end %>
+    </div>
+  </div>
+</div>
+<button type="button" class="btn btn-outline-primary"><%= link_to "Back to Search", books_path %></button>

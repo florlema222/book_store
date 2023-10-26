@@ -19,7 +19,10 @@
 
 Rails.application.routes.draw do
   resources :authors
-  resources :books, except: :index # Rutas para la búsqueda y visualización de libros
-  root to: 'books#index'
+  resources :books do
+    collection do
+      get 'search'
+    end
+  end
   resources :publishers
 end
