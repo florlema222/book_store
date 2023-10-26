@@ -191,7 +191,7 @@ Book.create(
 )
 
 Book.create(
-  title: 'Fantastic Beasts and Where to Find Them',
+  title: 'Fantastic Animal and Where to Find Them',
   author: author4,
   isbn: '9780545850568',
   date_of_publication: '2001-03-12',

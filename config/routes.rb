@@ -1,4 +1,5 @@
 # Rails.application.routes.draw do
+
 #     # Rutas para el Back Office (Administración)
 #     namespace :admin do
 #       # Rutas para gestionar autores (Authors)
@@ -18,11 +19,13 @@
 #   end
 
 Rails.application.routes.draw do
+  root 'books#index'
+  get '/search', to: 'search#index', as: 'search'
   resources :authors
-  resources :books do
-    collection do
-      get 'search'
-    end
-  end
+  resources :books #do
+    #collection do
+     # get 'search'
+    #end
+ # end
   resources :publishers
 end
