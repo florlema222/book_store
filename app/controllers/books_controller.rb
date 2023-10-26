@@ -2,22 +2,10 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i[ show edit update destroy ]
 
 
-  def search
-    # Lógica para realizar la búsqueda de libros aquí
-    # Puedes utilizar el parámetro params[:query] para obtener la cadena de búsqueda.
-    @results = Book.where("title LIKE ?", "%#{params[:query]}%")
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @results }
-    end
-  end
   # GET /books or /books.json
   def index
     @books = Book.all
-    if params[:query].present?
-      @books = @books.where(title: params[:query])
-    end
   end
 
   # GET /books/1 or /books/1.json
