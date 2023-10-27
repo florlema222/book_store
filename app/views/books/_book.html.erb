@@ -8,6 +8,8 @@
     <strong>Author:</strong>
     <%= Author.find(book.author_id).first_name %>
     <%= Author.find(book.author_id).last_name %>
+    (<%= age(Author.find(book.author_id).date_of_birth) %> years old)
+
   </p>
 
   <p>
