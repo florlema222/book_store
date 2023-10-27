@@ -1,4 +1,6 @@
 class SearchController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def index
       if params[:search].present?
         if params[:category] == "Author"

@@ -6,7 +6,8 @@
 
   <p>
     <strong>Author:</strong>
-    <%= book.author_id %>
+    <%= Author.find(book.author_id).first_name %>
+    <%= Author.find(book.author_id).last_name %>
   </p>
 
   <p>
@@ -31,7 +32,7 @@
 
   <p>
     <strong>Publisher:</strong>
-    <%= book.publisher_id %>
+    <%=Publisher.find(book.publisher_id).name%>
   </p>
 
 </div>

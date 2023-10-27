@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: %i[index show ]
+
 
 
 
@@ -50,7 +52,7 @@ class BooksController < ApplicationController
     end
   end
 
-  # DELETE /books/1 or /books/1.json
+  #DELETE /books/1 or /books/1.json
   def destroy
     @book.destroy
 
