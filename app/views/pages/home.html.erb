@@ -1,5 +1,11 @@
-<h1>Pages#home</h1>
+<div class="container">
+  <%= form_with(url: search_path, method: :get, class: "d-flex") do |form| %>
+    <%= form.label :search, "Search for:" %>
+    <%= form.text_field :search, class: "form-control" %>
 
-<% if user_signed_in? %>
-  <p>logged in as <%= current_user.email%></p>
-<%end%>
+    <%= form.label :category, "Filter by Category:" %>
+    <%= form.select :category, ["All", "Author", "Publisher"], { include_blank: "All" }, class: "form-control" %>
+
+    <%= form.submit "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>

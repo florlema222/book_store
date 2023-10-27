@@ -1,13 +1,17 @@
 <p style="color: green"><%= notice %></p>
-
-<%= render @book %>
-
-<div>
-  <% if user_signed_in? %>
-    <%= link_to "Edit this book", edit_book_path(@book) %> |
-    <%= link_to "Back to books", books_path %>
-    <%= button_to "Destroy this book", @book, method: :delete %>
-  <%else%>
-    <%= link_to "Back to books", books_path %>
-  <%end%>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <%= render @book %>
+      <div>
+        <% if user_signed_in? %>
+          <%= link_to "Edit this book", edit_book_path(@book) %> |
+          <%= link_to "Back to books", books_path %>
+          <%= button_to "Destroy this book", @book, method: :delete %>
+        <%else%>
+          <%= link_to "Back to books", books_path %>
+        <%end%>
+      </div>
+    </div>
+  </div>
 </div>
