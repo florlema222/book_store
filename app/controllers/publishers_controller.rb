@@ -1,5 +1,7 @@
 class PublishersController < ApplicationController
   before_action :set_publisher, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: %i[index show ]
+
 
   # GET /publishers or /publishers.json
   def index
