@@ -1,4 +1,4 @@
 class Publisher < ApplicationRecord
   has_many :books
-  searchkick
+  validates :name, presence: true
 end
