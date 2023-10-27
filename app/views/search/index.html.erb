@@ -1,42 +1,38 @@
-<%= form_with(url: search_path, method: :get, class: "d-flex") do |form| %>
-  <%= form.label :search, "Search for:" %>
-  <%= form.text_field :search, class: "form-control" %>
+<div class="container">
+  <%= form_with(url: search_path, method: :get, class: "d-flex") do |form| %>
+    <%= form.label :search, "Search for:" %>
+    <%= form.text_field :search, class: "form-control" %>
 
-  <%= form.label :category, "Filter by Category:" %>
-  <%= form.select :category, ["All", "Author", "Publisher"], { include_blank: "All" }, class: "form-control" %>
+    <%= form.label :category, "Filter by Category:" %>
+    <%= form.select :category, ["All", "Author", "Publisher"], { include_blank: "All" }, class: "form-control" %>
 
-  <%= form.submit "Search", class: "btn btn-primary" %>
-<% end %>
+    <%= form.submit "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
 
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-8">
       <div id="books">
         <h1>Search Results</h1>
-        <h1>im here</h1>
-        <% if @results.empty? %>
-          <h1>results is empty</h1>
-        <%end%>
-        <% if @results.any? %>
-          <h1>results found</h1>
-
-          <ul>
-            <% @results.each do |result| %>
-              <li>
-                <h4><%= result.title %></h4>
-                <p><strong>Author:</strong> <%= "#{result.author.first_name} #{result.author.last_name}" %></p>
-                <p><strong>Publisher:</strong> <%= result.publisher.name %></p>
-                <p><strong>ISBN:</strong> <%= result.isbn %></p>
-                <p><strong>Date of Publication:</strong> <%= result.date_of_publication %></p>
-                <p><strong>Review:</strong> <%= result.review %></p>
-                <p><strong>Price:</strong> <%= number_to_currency(result.price) %></p>
-                <p><%= link_to "Show this book", book_path(result) %></p>
-              </li>
-            <% end %>
-          </ul>
-        <% else %>
-          <em>No books found.</em>
-        <% end %>
+          <% if @results.any? %>
+            <ul>
+              <% @results.each do |result| %>
+                <li>
+                  <h4><%= result.title %></h4>
+                  <p><strong>Author:</strong> <%= "#{result.author.first_name} #{result.author.last_name}" %></p>
+                  <p><strong>Publisher:</strong> <%= result.publisher.name %></p>
+                  <p><strong>ISBN:</strong> <%= result.isbn %></p>
+                  <p><strong>Date of Publication:</strong> <%= result.date_of_publication %></p>
+                  <p><strong>Review:</strong> <%= result.review %></p>
+                  <p><strong>Price:</strong> <%= number_to_currency(result.price) %></p>
+                  <p><%= link_to "Show this book", book_path(result) %></p>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <em>No books found.</em>
+          <% end %>
       </div>
     </div>
   </div>

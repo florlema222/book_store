@@ -1,40 +1,44 @@
-<div id="<%= dom_id book %>">
-  <p>
-    <strong>Title:</strong>
-    <%= book.title %>
-  </p>
+<div class="card" style="width: 18rem;">
 
-  <p>
-    <strong>Author:</strong>
-    <%= Author.find(book.author_id).first_name %>
-    <%= Author.find(book.author_id).last_name %>
-    (<%= age(Author.find(book.author_id).date_of_birth) %> years old)
+    <div class="card-body" id="<%= dom_id book %>">
+      <p class="card-title">
+        <strong>Title:</strong>
+        <%= book.title %>
+      </p>
 
-  </p>
+      <p class="card-subtitle text-body-secondary">
+        <strong>Author:</strong>
+        <%= Author.find(book.author_id).first_name %>
+        <%= Author.find(book.author_id).last_name %>
+        (<%= age(Author.find(book.author_id).date_of_birth) %> years old)
 
-  <p>
-    <strong>Isbn:</strong>
-    <%= book.isbn %>
-  </p>
+      </p>
 
-  <p>
-    <strong>Date of publication:</strong>
-    <%= book.date_of_publication %>
-  </p>
+      <p class="card-text">
+        <strong>Isbn:</strong>
+        <%= book.isbn %>
+      </p>
 
-  <p>
-    <strong>Review:</strong>
-    <%= book.review %>
-  </p>
+      <p class="card-text">
+        <strong>Date of publication:</strong>
+        <%= book.date_of_publication %>
+      </p>
 
-  <p>
-    <strong>Price:</strong>
-    <%= book.price %>
-  </p>
+      <p class="card-text">
+        <strong>Review:</strong>
+        <%= book.review %>
+      </p>
 
-  <p>
-    <strong>Publisher:</strong>
-    <%=Publisher.find(book.publisher_id).name%>
-  </p>
+      <p class="card-text">
+        <strong>Price:</strong>
+        <%= book.price %>
+      </p>
 
+      <p class="card-text">
+        <strong>Publisher:</strong>
+        <%=Publisher.find(book.publisher_id).name%>
+      </p>
+
+    </div>
+  </div>
 </div>
