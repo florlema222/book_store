@@ -6,7 +6,7 @@ class SearchController < ApplicationController
         if params[:category] == "Author"
           @results = Book.includes(:author).joins(:author).where("authors.first_name @@ ? OR authors.last_name @@ ?", "%#{params[:search]}%", "%#{params[:search]}%")
         elsif params[:category] == "Publisher"
-          @results = Book.includes(:publisher).joins(:publisher).where("publishers.name LIKE ?", "%#{params[:search]}%")
+          @results = Book.includes(:publisher).joins(:publisher).where("publishers.name @@ ?", "%#{params[:search]}%")
         else
           @results = Book.includes(:author, :publisher)
               .joins(:author, :publisher)
