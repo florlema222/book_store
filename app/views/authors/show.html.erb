@@ -1,10 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @author %>
 
-<div>
-  <%= link_to "Edit this author", edit_author_path(@author) %> |
-  <%= link_to "Back to authors", authors_path %>
+<div class="container">
+  <%= render @author %>
+  <div>
+    <%= link_to "Edit this author", edit_author_path(@author) %> |
+    <%= link_to "Back to authors", authors_path %>
 
-  <%= button_to "Destroy this author", @author, method: :delete %>
+    <%= button_to "Destroy this author", @author, method: :delete %>
+  </div>
+  <div>
+    <h2>Books by <%= @author.first_name %> <%= @author.last_name %></h2>
+      <ul>
+        <% @books.each do |book| %>
+          <h4><%= book.title %></h4>
+          <p><%= link_to "Show this book", book_path(book) %></p>
+
+        <% end %>
+      </ul>
+  </div>
 </div>
+

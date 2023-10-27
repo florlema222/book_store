@@ -10,6 +10,8 @@ class PublishersController < ApplicationController
 
   # GET /publishers/1 or /publishers/1.json
   def show
+    @publisher = Publisher.find(params[:id])
+    @books = @publisher.books
   end
 
   # GET /publishers/new
