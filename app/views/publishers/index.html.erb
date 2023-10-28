@@ -1,14 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Publishers</h1>
 
-<div id="publishers">
-  <% @publishers.each do |publisher| %>
-    <%= render publisher %>
-    <p>
-      <%= link_to "Show this publisher", publisher %>
-    </p>
-  <% end %>
+
+<div class="container">
+  <h1>Publishers</h1>
+  <div id="publishers">
+    <% @publishers.each do |publisher| %>
+      <%= render publisher %>
+      <p>
+        <%= link_to "Show this publisher", publisher %>
+      </p>
+    <% end %>
+  </div>
+  <br>
+  <%= link_to "New publisher", new_publisher_path %>
 </div>
-
-<%= link_to "New publisher", new_publisher_path %>

@@ -5,18 +5,18 @@ class SearchController < ApplicationController
   def index
       if params[:search].present?
         if params[:category] == "Author"
-          @results = Book.includes(:author).joins(:author).where("authors.first_name @@ ? OR authors.last_name @@ ?", "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(10)
+          @results = Book.includes(:author).joins(:author).where("authors.first_name @@ ? OR authors.last_name @@ ?", "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(5)
         elsif params[:category] == "Publisher"
-          @results = Book.includes(:publisher).joins(:publisher).where("publishers.name @@ ?", "%#{params[:search]}%").page(params[:page]).per(10)
+          @results = Book.includes(:publisher).joins(:publisher).where("publishers.name @@ ?", "%#{params[:search]}%").page(params[:page]).per(5)
         else
           @results = Book.includes(:author, :publisher)
               .joins(:author, :publisher)
               .where("books.title @@ ? OR books.isbn LIKE ? OR authors.first_name @@ ? OR authors.last_name @@ ? OR publishers.name @@ ?",
-                     "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(10)
+                     "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(5)
 
         end
       else
-        @results = Book.page(params[:page]).per(10)
+        @results = Book.page(params[:page]).per(5)
       end
   end
 
