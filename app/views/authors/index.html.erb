@@ -4,6 +4,10 @@
 <div class="container">
   <div id="authors">
     <% @authors.each do |author| %>
+      <h4><%= author.first_name%> <%= author.last_name%></h4>
+      <p><strong>Date of Birth:</strong><%= author.date_of_birth%></p>
+      <p><strong>About:</strong><%= author.about%></p>
+      <p><strong>Nationality:</strong><%= author.nationality%></p>
       <p>
         <%= link_to "Show this author", author %>
       </p>

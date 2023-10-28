@@ -9,6 +9,9 @@
 
     <%= button_to "Destroy this author", @author, method: :delete %>
   </div>
+</div>
+<br>
+<div class="container">
   <div>
     <h2>Books by <%= @author.first_name %> <%= @author.last_name %></h2>
       <ul>
@@ -20,4 +23,3 @@
       </ul>
   </div>
 </div>
-

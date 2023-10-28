@@ -1,0 +1,40 @@
+.searchcontainer {
+  margin-bottom: 20px;
+  .form-control {
+    margin: auto 20px;
+  }
+}
+
+#searchhome {
+  margin-top: 80px;
+}
+
+.navbar {
+  margin-bottom: 15px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  background-color: #F8F9FA;
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+ul {
+  list-style: none;
+}
+
+#h1search {
+  margin-left: 12px;
+}
+

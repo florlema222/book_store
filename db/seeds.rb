@@ -171,17 +171,7 @@ Book.create(
 
 
 Book.create(
-  title: 'Harry Potter and the Half-Blood Prince',
-  author: author4,
-  isbn: '9780439785969',
-  date_of_publication: '2005-07-16',
-  review: 'The penultimate book in the series',
-  price: 18.99,
-  publisher: publisher3
-)
-
-Book.create(
-  title: 'Harry Potter and the Deathly Hallows',
+  title: 'Pride and Prejudice',
   author: author4,
   isbn: '9780545010221',
   date_of_publication: '2007-07-21',
@@ -191,13 +181,23 @@ Book.create(
 )
 
 Book.create(
-  title: 'Fantastic Animal and Where to Find Them',
+  title: 'Sense and Sensibility',
   author: author4,
-  isbn: '9780545850568',
-  date_of_publication: '2001-03-12',
-  review: 'A guide to magical creatures',
-  price: 12.99,
-  publisher: publisher4
+  isbn: '9780545010221',
+  date_of_publication: '2007-07-21',
+  review: 'The epic conclusion to the series',
+  price: 19.99,
+  publisher: publisher3
+)
+
+Book.create(
+  title: 'Emma',
+  author: author4,
+  isbn: '9780545010221',
+  date_of_publication: '2007-07-21',
+  review: 'The epic conclusion to the series',
+  price: 19.99,
+  publisher: publisher3
 )
 
 Book.create(
