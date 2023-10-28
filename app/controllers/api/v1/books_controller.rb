@@ -4,7 +4,7 @@ class Api::V1::BooksController < ApplicationController
 
   def index
     if params[:title].present?
-      @books = Book.where("title ILIKE ?", "%#{params[:title]}%")
+      @books = Book.where("title ILIKE ?", "%#{params[:title]}%").page(params[:page]).per(10)
       if @books
         render json: @books
       else
@@ -12,23 +12,31 @@ class Api::V1::BooksController < ApplicationController
       end
 
     elsif params[:min_price].present? && params[:max_price].present?
-      @books = Book.where("price >= ? AND price <= ?", params[:min_price], params[:max_price])
+      @books = Book.where("price >= ? AND price <= ?", params[:min_price], params[:max_price]).page(params[:page]).per(10)
       if @books
         render json: @books
       else
         render json: { error: "No books were found with that price range" }, status: :not_found
       end
     elsif params[:author_name].present?
-      author = Author.find_by("first_name ILIKE ? OR last_name ILIKE ?", "%#{params[:author_name]}%", "%#{params[:author_name]}%")
+      author = Author.find_by("first_name ILIKE ? OR last_name ILIKE ?", "%#{params[:author_name]}%", "%#{params[:author_name]}%").page(params[:page]).per(10)
       if author
-        @books = Book.where(author_id: author.id)
+        @books = Book.where(author_id: author.id).page(params[:page]).per(10)
         render json: @books
       else
         render json: { error: "No books were found by that author" }, status: :not_found
       end
     else
-      @books = Book.all
-      render json: @books
+      @books = Book.page(params[:page]).per(10)
+      response = {
+        books: @books,
+        current_page: @books.current_page,
+        total_pages: @books.total_pages,
+        total_count: @books.total_count
+      }
+      response[:next_page] = @books.next_page if @books.next_page
+      response[:prev_page] = @books.prev_page if @books.prev_page
+      render json: response
     end
   end
 
@@ -65,8 +73,5 @@ class Api::V1::BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :author_id, :isbn, :date_of_publication, :review, :price, :publisher_id)
   end
-
-  private
-
 
 end

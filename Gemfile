@@ -78,3 +78,6 @@ gem "bootstrap"
 gem "sassc-rails"
 gem 'searchkick', '~> 5.3'
 gem 'elasticsearch', '~> 8.10'
+
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'

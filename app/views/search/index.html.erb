@@ -30,6 +30,7 @@
                 </li>
               <% end %>
             </ul>
+            <%= paginate @results, theme: 'bootstrap-5' %>
           <% else %>
             <em>No books found.</em>
           <% end %>
