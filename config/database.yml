@@ -32,7 +32,7 @@ development:
   #username: book_store
 
   # The password associated with the postgres role (username).
-  #password:
+  #password: 11115
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["MY_APP_DATABASE_URL"] %>
   database: book_store_production
   username: book_store
   password: <%= ENV["BOOK_STORE_DATABASE_PASSWORD"] %>
